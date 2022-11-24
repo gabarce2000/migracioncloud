@@ -1,0 +1,30 @@
+runtime: php81 # Replace with php74 to use PHP 7.4
+
+handlers:
+
+- url: /(.*\.(htm|html|css|js))
+  static_files: \1
+  upload: .*\.(htm|html|css|js)$
+ #Serve a directory as a static resource.
+#- url: /stylesheets
+ #static_dir: stylesheets
+
+ #Serve images as static resources.
+- url: /wp-content/(.*\.(ico|jpg|jpeg|png|gif|woff|ttf|otf|eot|svg))
+  static_files: wp-content/\1
+  upload: wp-content/.*\.(ico|jpg|jpeg|png|gif|woff|ttf|otf|eot|svg)$
+
+ #Serve your app through a front controller at index.php or public/index.php.
+- url: /public/public/index.php
+#- url: /public/index.php
+  script: auto
+
+entrypoint:
+ serve path/to/my/front/controller.php
+
+
+env_variables:
+  CLOUDSQL_USER: root
+  CLOUDSQL_DB: maikreplic_db
+  CLOUDSQL_PASSWORD: IvB+H]2yKK|D4ieB
+  CLOUD_DSN: /cloudsql/myappemergente:us-central1:appemergente10
